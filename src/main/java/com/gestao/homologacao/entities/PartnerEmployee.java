@@ -23,8 +23,9 @@ public class PartnerEmployee {
 
     private String position;
 
+    // Iniciando o status padrão do Employee.
     @Enumerated(EnumType.STRING)
-    private EmployeeStatus status;
+    private EmployeeStatus status = EmployeeStatus.PENDING_DOCUMENTS;
 
     @ManyToOne
     @JoinColumn(name = "partner_id")

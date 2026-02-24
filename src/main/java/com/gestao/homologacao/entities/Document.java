@@ -1,5 +1,6 @@
 package com.gestao.homologacao.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gestao.homologacao.enums.DocumentStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -25,9 +26,13 @@ public class Document {
 
     @ManyToOne
     @JoinColumn(name = "employee_id")
+    @JsonIgnore
     private PartnerEmployee employee;
 
     @ManyToOne
     @JoinColumn(name = "document_type_id")
-    private DocumentType type;
+    private DocumentType documentType;
+
+    private String observation;
+
 }
