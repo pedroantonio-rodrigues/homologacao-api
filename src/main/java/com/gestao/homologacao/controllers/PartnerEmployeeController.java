@@ -1,6 +1,7 @@
 package com.gestao.homologacao.controllers;
 
 import com.gestao.homologacao.entities.PartnerEmployee;
+import com.gestao.homologacao.enums.EmployeeStatus;
 import com.gestao.homologacao.repositories.PartnerEmployeeRepository;
 import com.gestao.homologacao.repositories.PartnerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,11 @@ public class PartnerEmployeeController {
     }
 
     @GetMapping
-    public List<PartnerEmployee> listAll(){
+    public List<PartnerEmployee> list(@RequestParam(required = false)EmployeeStatus status){
+        if (status != null) {
+            // Busca por status
+            return employeeRepository.findByStatus(status);
+        }
         return employeeRepository.findAll();
     }
 }

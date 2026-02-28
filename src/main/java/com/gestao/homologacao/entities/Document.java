@@ -1,12 +1,15 @@
 package com.gestao.homologacao.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.gestao.homologacao.enums.DocumentStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "documents")
@@ -34,5 +37,9 @@ public class Document {
     private DocumentType documentType;
 
     private String observation;
+
+    @OneToMany(mappedBy = "document", cascade = CascadeType.ALL)
+    @OrderBy("createdAt DESC")
+    private List<DocumentHistory> history;
 
 }

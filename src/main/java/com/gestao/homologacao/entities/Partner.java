@@ -1,5 +1,7 @@
 package com.gestao.homologacao.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.gestao.homologacao.enums.PartnerStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -25,5 +27,6 @@ public class Partner {
     private LocalDateTime createdAt = LocalDateTime.now();
 
     @OneToMany(mappedBy = "partner", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<PartnerEmployee> employees;
 }

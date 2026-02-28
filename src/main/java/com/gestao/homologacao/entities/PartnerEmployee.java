@@ -1,5 +1,7 @@
 package com.gestao.homologacao.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.gestao.homologacao.enums.EmployeeStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
