@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -35,6 +36,11 @@ public class PartnerEmployee {
 
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
     private List<Document> documents;
+
+    private String observation;
+
+    @OneToMany(mappedBy = "partnerEmployee", cascade = CascadeType.ALL)
+    private List<PartnerEmployeeHistory> partnerEmployeeHistories = new ArrayList<>();
 
 
 

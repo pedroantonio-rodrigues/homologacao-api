@@ -15,7 +15,7 @@ import java.nio.file.Paths;
 @Service
 public class FileStorageService {
 
-    //Define onde os arquivos serão salvos no computador
+    //Define onde os arquivos serão salvos, no caso aqui na pasta uploads no computador
     private final Path root = Paths.get("uploads");
 
     public String save(MultipartFile file){

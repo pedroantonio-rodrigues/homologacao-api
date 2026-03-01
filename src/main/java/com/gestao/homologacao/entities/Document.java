@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -41,5 +42,12 @@ public class Document {
     @OneToMany(mappedBy = "document", cascade = CascadeType.ALL)
     @OrderBy("createdAt DESC")
     private List<DocumentHistory> history;
+
+    private LocalDateTime uploadDate;
+
+    @PrePersist
+    protected void onCreate() {
+        this.uploadDate = LocalDateTime.now();
+    }
 
 }
